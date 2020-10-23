@@ -34,6 +34,17 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.get('/find/:q', async (req, res) => {
+    try {
+        console.log('TESTE', req.params.q);
+        const veiculos = await Veiculo.find(req.params.q);
+
+        return res.send({ veiculos });
+    } catch (err) {
+        return res.status(400).send({ error: 'Deu Ruim!' });
+    }
+});
+
 router.put('/:id', async (req, res) => {
     try {
         const retorno = await Veiculo.updateOne({ _id: req.params.id }, { ...req.body, updated: new Date() });

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -R spec --exit ./src/test",
+    "test": "mocha -R spec --exit --timeout 5000 ./src/test",
     "start": "nodemon src/index.js"
   },
   "keywords": [],
