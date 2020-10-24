@@ -82,18 +82,21 @@ describe('veiculoController', () => {
                 .end(done);
         })
 
-        // it('EditarVeiculoErroMarcaTest', (done) => {
-        //     request(app).put(`/veiculos/${retorno._id}`)
-        //         .send({
-        //             veiculo: 'Corsa',
-        //             marca: 'Toyota',
-        //             ano: '2020',
-        //             descricao: 'Um carro que talvez eu pretenda comprar',
-        //             vendido: true
-        //         })
-        //         .expect(500)
-        //         .end(done);
-        // })
+        it('EditarVeiculoErroMarcaTest', (done) => {
+            request(app).put(`/veiculos/${retorno._id}`)
+                .send({
+                    veiculo: 'Corsa',
+                    marca: 'Toyota',
+                    ano: '2020',
+                    descricao: 'Um carro que talvez eu pretenda comprar',
+                    vendido: true
+                })
+                .expect(400)
+                .expect(res => {
+                    expect(res.body.err.message).to.be.equal('Validation failed: marca: `Toyota` is not a valid enum value for path `marca`.')
+                })
+                .end(done);
+        })
 
         it('PATCHVeiculoAnoTest', (done) => {
             request(app).patch(`/veiculos/${retorno._id}`)
@@ -106,6 +109,24 @@ describe('veiculoController', () => {
             request(app).patch(`/veiculos/${retorno._id}`)
                 .send({ descricao: 'Quem criou o Corsa foi a Opel' })
                 .expect(200)
+                .end(done);
+        })
+
+        it('FindVeiculoAnoTest', (done) => {
+            request(app).get(`/veiculos/find/q?ano=2010`)
+                .expect(200)
+                .expect(res => {
+                    expect(res.body.veiculos[0].ano).to.be.equal(retorno.ano)
+                })
+                .end(done);
+        })
+
+        it('FindVeiculoMarcaTest', (done) => {
+            request(app).get(`/veiculos/find/q?marca=Chevrolet`)
+                .expect(200)
+                .expect(res => {
+                    expect(res.body.veiculos[0].marca).to.be.equal(retorno.marca)
+                })
                 .end(done);
         })
 

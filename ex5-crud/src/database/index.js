@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const password = 'veiculo';
 const user = 'veiculo';
 const dbname = 'veiculo';
-mongoose.connect(`mongodb+srv://veiculo:${password}@cluster0.pgpdg.mongodb.net/${dbname}?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://veiculo:${password}@cluster0.pgpdg.mongodb.net/${dbname}?retryWrites=true&w=majority`, { useFindAndModify: false });
 
 mongoose.Promise = global.Promise;
 
