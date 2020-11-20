@@ -8,7 +8,13 @@
           <ul class="list-group" v-if="veiculos.length > 0">
               <li class="list-group-item" v-for="veiculo in veiculos" :key="veiculo._id">
                   <div class="row">
-                      aksdasdaaklsdlasda
+                    <div class="col-md-8 align-self-center">
+                      <p><strong>Veículo:</strong> {{ veiculo.veiculo }}</p>
+                      <p><strong>Marca:</strong> {{ veiculo.veiculo }}</p>
+                    </div>
+                    <div class="col-md-4 align-self-center">
+                      <button class="btn btn-success align-middle">Visualizar Veículo</button>
+                    </div>
                   </div>
               </li>
           </ul>

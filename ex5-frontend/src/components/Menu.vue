@@ -1,7 +1,7 @@
 <template>
   <div class="row border rounded text-center">
     <div class="col-md">
-      <h3>Cadastrar Veículo</h3>
+      <CadastrarVeiculo></CadastrarVeiculo>
     </div>
     <div class="col-md">
       <h3>Veículos não Vendidos</h3>
@@ -16,9 +16,13 @@
 </template>
 
 <script>
+import CadastrarVeiculo  from "./CadastrarVeículo";
+
 export default {
   name: 'Menu',
-  
+  components: {
+    CadastrarVeiculo
+  }
 }
 </script>
 
