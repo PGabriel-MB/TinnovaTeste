@@ -1,29 +1,38 @@
 <template>
-  <div class="row border rounded text-center">
+  <div class="row border rounded text-center py-3">
     <div class="col-md">
       <CadastrarVeiculo></CadastrarVeiculo>
     </div>
     <div class="col-md">
-      <h3>Veículos não Vendidos</h3>
+      <b-button variant='success'>
+        Veículos não Vendidos
+        <b-icon icon="truck-flatbed"></b-icon>
+      </b-button>
     </div>
     <div class="col-md">
-      <h3>Veículos por Década</h3>
+      <b-button variant='success'>
+        Veículos por Década
+        <b-icon icon="calendar3"></b-icon>
+      </b-button>
     </div>
     <div class="col-md">
-      <h3>Veículos por Fabricante</h3>
+      <b-button variant='success'>
+        Veículos por Fabricante
+        <b-icon icon="tools"></b-icon>
+      </b-button>
     </div>
   </div>
 </template>
 
 <script>
-import CadastrarVeiculo  from "./CadastrarVeículo";
+import CadastrarVeiculo from "./CadastrarVeículo";
 
 export default {
-  name: 'Menu',
+  name: "Menu",
   components: {
-    CadastrarVeiculo
-  }
-}
+    CadastrarVeiculo,
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

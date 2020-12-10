@@ -35,7 +35,6 @@ export default {
         })
         .then(async (res) => {
           this.veiculos = await res.data;
-          console.log('DADOS', res.data)
         });
     },
   },

@@ -13,7 +13,7 @@
                       <p><strong>Marca:</strong> {{ veiculo.veiculo }}</p>
                     </div>
                     <div class="col-md-4 align-self-center">
-                      <button class="btn btn-success align-middle">Visualizar Veículo</button>
+                      <Veiculo :veiculo="veiculo" />
                     </div>
                   </div>
               </li>
@@ -27,11 +27,14 @@
 </template>
 
 <script>
-//import ItemVeiculo from "./ItemVeiculo";
+import Veiculo from "./Veiculo";
 
 export default {
   name: "ListaDeVeiculos",
   props: ["veiculos"],
+  components: {
+    Veiculo
+  }
   //data() {
   //  return {
   //
