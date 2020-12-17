@@ -42,10 +42,10 @@
 
       <template #modal-footer>
         <div>
-          <b-button variant="success">
+          <b-button title="OK" variant="success">
             <b-icon icon="check-circle"></b-icon>
           </b-button>
-          <b-button variant="danger" class="ml-2">
+          <b-button title="Excluir Veículo"  variant="danger" class="ml-2">
             <b-icon icon="x-circle"></b-icon>
           </b-button>
         </div>
