@@ -19,6 +19,7 @@
                 v-model="veiculo"
                 type="text"
                 placeholder="Ex.: Monza"
+                :state="states.veiculo"
                 required
               ></b-form-input>
             </b-form-group>
@@ -29,6 +30,7 @@
                 id="id_marca"
                 v-model="marca"
                 :options="marcasOpt"
+                :state="states.marca"
                 required
               ></b-form-select>
             </b-form-group>
@@ -36,12 +38,13 @@
         </div>
         <div class="row">
           <div class="col-md">
-            <b-form-group id="input-ano" label="Veículo" label-for="id_ano">
+            <b-form-group id="input-ano" label="Ano" label-for="id_ano">
               <b-form-input
                 id="id_ano"
                 v-model="ano"
                 type="number"
                 placeholder="Ex.: 1985"
+                :state="states.ano"
                 required
                 min="1980"
               ></b-form-input>
@@ -81,11 +84,14 @@
             </b-form-group>
           </div>
         </div>
+        <b-alert :show="mostrarAlert" fade :variant="variante">
+          {{ messageAlert }}
+        </b-alert>
       </div>
       <template #modal-footer>
         <div>
           <b-button> Cancelar </b-button>
-          <b-button title="OK" variant="success" class="ml-2">
+          <b-button title="OK" variant="success" @click="salvarVeiculo" class="ml-2">
             Cadastrar
           </b-button>
         </div>
@@ -96,11 +102,12 @@
 
 <script>
 import { BIcon } from "bootstrap-vue";
+import axios from "axios";
 
 export default {
   name: "CadastraVeiculo",
   components: {
-    BIcon,
+    BIcon
   },
   data() {
     return {
@@ -113,14 +120,60 @@ export default {
       ano: 0,
       descricao: "",
       vendido: false,
+      states: {
+        veiculo: null,
+        marca: null,
+        ano: null
+      },
+      url: 'http://localhost:3000/veiculos/',
+      mostrarAlert: false,
+      variante: 'success',
+      messageAlert: 'Veículo cadastrado com Sucesso!'
     };
   },
   methods: {
     validarFormulario() {
+      this.states.veiculo  = (this.veiculo) ? null : false;
+      this.states.marca = (this.marca) ? null : false;
+      this.states.ano = (this.ano > 1970) ? null : false;
 
+      for(let state in this.states) {
+        if (!this.states[state]) {
+          return false;
+        }
+      }
+
+      return true;
     },
     limparFormulario() {
       
+    },
+    salvarVeiculo(){
+      let valid = this.validarFormulario();
+      if (valid) {
+
+        let dataObject = {
+          veiculo: this.veiculo,
+          marca: this.marca,
+          ano: this.ano,
+          descricao: this.descricao,
+          vendido: this.vendido
+        }
+
+        axios.post(this.url, dataObject).then(() => {
+          this.mostrarAlert = true;
+          setTimeout(() => {
+            this.mostrarAlert = false;
+          }, 3000);
+        }); 
+      } else {
+        this.variante = 'danger';
+        this.mostrarAlert = true;
+        this.messageAlert = 'Verifique todos os campos';
+        setTimeout(() => {
+          this.mostrarAlert = false;
+        }, 3000);
+      }
     }
   },
 };
