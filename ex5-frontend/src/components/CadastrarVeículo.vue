@@ -137,8 +137,12 @@ export default {
       this.states.marca = (this.marca) ? null : false;
       this.states.ano = (this.ano > 1970) ? null : false;
 
+      console.log('VEICULO', this.veiculo)
+      console.log('MARCA', this.marca)
+      console.log('ANO', this.ano)
+
       for(let state in this.states) {
-        if (!this.states[state]) {
+        if (this.states[state] === false) {
           return false;
         }
       }
@@ -165,6 +169,7 @@ export default {
           setTimeout(() => {
             this.mostrarAlert = false;
           }, 3000);
+          location.reload();
         }); 
       } else {
         this.variante = 'danger';

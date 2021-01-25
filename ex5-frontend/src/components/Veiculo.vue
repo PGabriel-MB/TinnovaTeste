@@ -1,17 +1,12 @@
 <template>
   <div>
-    <b-button v-b-modal.modal-VisualizarVeiculo variant="success">
-      Visualizar Veículo
-      <b-icon icon="eye"></b-icon>
-    </b-button>
-
     <b-modal
-      id="modal-VisualizarVeiculo"
+      ref="modal-VisualizarVeiculo"
       centered
       size="lg"
       title="Visualizar Veículo"
     >
-      <div class="container">
+      <div class="container" v-if="veiculo">
         <div class="row">
           <div class="col">
             <label for=""><strong>Veículo:</strong></label>
@@ -55,10 +50,22 @@
 </template>
 
 <script>
+import { bus } from "../main";
+
 export default {
   name: "Veiculo", // Visualizando detalhes do veiculo
-  props: ["veiculo"],
+  data(){
+    return {
+      veiculo: null
+    }
+  },
   methods: {},
+  mounted() {
+    bus.$on('abrirModal', (veiculo) => {
+      this.veiculo = veiculo;
+      this.$refs['modal-VisualizarVeiculo'].show();
+    });
+  }
 };
 </script>
 
