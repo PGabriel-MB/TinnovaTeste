@@ -14,7 +14,7 @@
             <div class="row">
               <div class="col-md-8 align-self-center">
                 <p><strong>Veículo:</strong> {{ veiculo.veiculo }}</p>
-                <p><strong>Marca:</strong> {{ veiculo.veiculo }}</p>
+                <p><strong>Marca:</strong> {{ veiculo.marca }}</p>
               </div>
               <div class="col-md-4 align-self-center">
                 <b-button variant="success" @click="levantarModal(veiculo)">

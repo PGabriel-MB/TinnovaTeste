@@ -5,7 +5,7 @@
       <b-icon icon="plus-circle"></b-icon>
     </b-button>
 
-    <b-modal id="modal-1" size="lg" title="Cadastrar Veículo">
+    <b-modal id="modal-1" refs="modal-AddCar" size="lg" title="Cadastrar Veículo" @hidden="limparFormulario">
       <div class="container">
         <div class="row">
           <div class="col-md">
@@ -90,7 +90,7 @@
       </div>
       <template #modal-footer>
         <div>
-          <b-button> Cancelar </b-button>
+          <b-button @click="$refs['modal-AddCar'].hide()"> Cancelar </b-button>
           <b-button title="OK" variant="success" @click="salvarVeiculo" class="ml-2">
             Cadastrar
           </b-button>
@@ -137,10 +137,6 @@ export default {
       this.states.marca = (this.marca) ? null : false;
       this.states.ano = (this.ano > 1970) ? null : false;
 
-      console.log('VEICULO', this.veiculo)
-      console.log('MARCA', this.marca)
-      console.log('ANO', this.ano)
-
       for(let state in this.states) {
         if (this.states[state] === false) {
           return false;
@@ -150,7 +146,13 @@ export default {
       return true;
     },
     limparFormulario() {
-      
+      for(let state in this.states) {
+        this.states[state] = null;
+      }
+
+      this.ano = 0;
+      this.marca = '';
+      this.descricao = '';
     },
     salvarVeiculo(){
       let valid = this.validarFormulario();
