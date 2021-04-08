@@ -1,9 +1,9 @@
 # CarsCrudVue
 Um repositório que foi inicialmente para os exercícios de teste em processo seletivo para a empresa [Tinnova](wwww.tinnova.com.br) e que hoje é trabalhado mais como um repositório de estudo para o Vue.js :computer:
 
-<span style="display: block; text-align: center">
-  ![image](https://user-images.githubusercontent.com/39538844/114008880-08047600-9839-11eb-9543-e6226b38ddcc.png)
-</span>
+<p align="center">
+  <img src="https://vuejs.org/images/logo.png" height="200" alt="Vue.js's custom image"/>
+</p>
 
 ## Descrição
 
