@@ -1,29 +1,34 @@
-# TinnovaTeste
-Um repositório para os exercícios de teste em processo seletivo da empresa [Tinnova](wwww.tinnova.com.br) :computer:
+# CarsCrudVue
+Um repositório que foi inicialmente para os exercícios de teste em processo seletivo para a empresa [Tinnova](wwww.tinnova.com.br) e que hoje é trabalhado mais como um repositório de estudo para o Vue.js :computer:
+
+*imagem do Vue centralizada aqui
 
 
 ## Descrição
 
-Neste repositório será encontrado praticamente uma  para cada exercício proposto na seguinte estrutura:
-
+Neste repo você irá encontrar a seguinte estrutura:
 
 ```sh
-ex1-votos/
-ex2-bubbleSort/
-ex3-fatorial/
-ex4-mult3e5/
-ex5-cadVeiculos/
+back-end/
+front-end/
 ```
 
-#### Obs.:
+Essa aplicação é basicamento um CRUD de carros como como se fosse uma aplicação para se administrar veículos em alguma concecionária.
 
-Infelizmente não consegui terminar todas as aplicações dos exercícios a tempo, neste primeiro momento, então estou trabalhando pra finalizar esse projeto de modo gradativo mesmo após o período de teste imposto pela empresa.
+A idéia é trabalhar o **[Vue.js](https://vuejs.org/)** de forma mais profissional em uma aplicação **fullStack** e ir evoluindo ela ao longo do tempo.
 
 ## Executando as aplicações
-Praticamentoe em todas as pastas pelo menos até o exercício 4 (`ex4-mult3e5`), as aplicações podem ser executas navegando-se até o diretório da pasta e executando o comundo via terminal: `node index.js` e logo em seguida a aplicação será executada.
-**Exemplo:**
+As aplicações podem ser executas navegando-se até o diretório da pasta e executando o comandos npms: `npm ...` e logo em seguida a aplicação será executada.
+**Front-end**
 ```sh
-:~/Tinnova/ex1-votos$ node index.js
+:~/Tinnova/ex1-votos$ npm run serve
+
+Hello, World!
+```
+
+**Back-end**
+```sh
+:~/Tinnova/ex1-votos$ npm start
 
 Hello, World!
 ```
