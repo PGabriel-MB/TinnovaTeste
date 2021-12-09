@@ -1,14 +1,14 @@
 const express = require('express');
 
-const Veiculo = require('../models/Veiculo');
+const Vehicle = require('../models/Vehicle');
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
     try {
-        const veiculo = await Veiculo.create(req.body);
+        const vehicle = await Vehicle.create(req.body);
 
-        return res.send({ veiculo });
+        return res.send({ vehicle });
     } catch (err) {
         return res.status(400).send({ error: 'Registration failed!', err });
     }
@@ -16,9 +16,9 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const veiculos = await Veiculo.find();
+        const vehicles = await Vehicle.find();
 
-        return res.send(veiculos);
+        return res.send(vehicles);
     } catch (err) {
         return res.status(400).send({ error: 'Request failed!' });
     }
@@ -26,9 +26,9 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const veiculo = await Veiculo.findById(req.params.id);
+        const vehicle = await Vehicle.findById(req.params.id);
 
-        return res.send({ veiculo });
+        return res.send({ vehicle });
     } catch (err) {
         return res.status(400).send({ error: 'Request failed!' });
     }
@@ -36,9 +36,9 @@ router.get('/:id', async (req, res) => {
 
 router.get('/find/q', async (req, res) => {
     try {
-        const veiculos = await Veiculo.find(req.query);
+        const vehicles = await Vehicle.find(req.query);
 
-        return res.send({ veiculos });
+        return res.send({ vehicles });
     } catch (err) {
         return res.status(400).send({ error: 'Reques failed!' });
     }
@@ -46,7 +46,7 @@ router.get('/find/q', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const retorno = await Veiculo.findOneAndUpdate({ _id: req.params.id }, { ...req.body, updated: new Date() }, { runValidators: true });
+        const retorno = await Vehicle.findOneAndUpdate({ _id: req.params.id }, { ...req.body, updated: new Date() }, { runValidators: true });
 
         return res.send({ retorno });
     } catch (err) {
@@ -57,9 +57,9 @@ router.put('/:id', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
     try {
-        const veiculo = await Veiculo.findOneAndUpdate({ _id: req.params.id }, { ...req.body, updated: new Date() }, { runValidators: true });
+        const vehicle = await Vehicle.findOneAndUpdate({ _id: req.params.id }, { ...req.body, updated: new Date() }, { runValidators: true });
 
-        return res.send({ veiculo });
+        return res.send({ vehicle });
     } catch (err) {
         return res.status(400).send({ error: 'Request failed!', err });
     }
@@ -67,7 +67,7 @@ router.patch('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const retorno = await Veiculo.deleteOne({ _id: req.params.id });
+        const retorno = await Vehicle.deleteOne({ _id: req.params.id });
 
         return res.send({ retorno });
     } catch (err) {

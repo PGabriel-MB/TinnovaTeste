@@ -1,24 +1,24 @@
-const mongoose = require('../database/index');
+const mongoose = require('../../database/index');
 
-const VeiculoSchema = new mongoose.Schema({
-    veiculo: {
+const VehicleSchema = new mongoose.Schema({
+    vehicle: {
         type: String,
         require: true
     },
-    marca: {
+    brand: {
         type: String,
         required: true,
         enum: ['Chevrolet', 'Ford']
     },
-    ano: {
+    year: {
         type: Number,
         required: true
     },
-    descricao: {
+    description: {
         type: String,
         required: false
     },
-    vendido: {
+    sold: {
         type: Boolean,
         required: true
     },
@@ -34,6 +34,6 @@ const VeiculoSchema = new mongoose.Schema({
     }
 });
 
-const Veiculo = mongoose.model('Veiculo', VeiculoSchema);
+const Vehicle = mongoose.model('Vehicle', VehicleSchema);
 
-module.exports = Veiculo;
+module.exports = Vehicle;
