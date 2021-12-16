@@ -4,8 +4,17 @@ const mongoose = require('mongoose');
 const password = 'veiculo';
 const user = 'veiculo';
 const dbname = 'veiculo';
-mongoose.connect(`mongodb+srv://veiculo:${password}@cluster0.pgpdg.mongodb.net/${dbname}?retryWrites=true&w=majority`, { useFindAndModify: false });
 
-mongoose.Promise = global.Promise;
+const uri = `mongodb+srv://${user}:${password}@cluster0.pgpdg.mongodb.net/${dbname}?retryWrites=true&w=majority`;
+
+try {
+    mongoose.connect (
+        uri,
+        { useNewUrlParser: true, useUnifiedTopology: true },
+        err => console.log('Database connected!', err)
+    )
+} catch (error) {
+    console.log('Connection Error', error)
+}
 
 module.exports = mongoose;
