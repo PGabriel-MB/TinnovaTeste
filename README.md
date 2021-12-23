@@ -1,4 +1,4 @@
-# CarsCrudVue
+# Carter
 Um repositório que foi inicialmente para os exercícios de teste em processo seletivo para a empresa [Tinnova](wwww.tinnova.com.br) e que hoje é trabalhado mais como um repositório de estudo para o Vue.js :computer:
 
 <p align="center">
