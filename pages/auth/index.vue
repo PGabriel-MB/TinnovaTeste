@@ -5,9 +5,14 @@
     ">
         <form action="" class="
             flex flex-col
-            bg-white my-10 p-12 rounded-xl
+            bg-white my-10 p-12 rounded-xl shadow-2xl
         ">
-            <h1 class="text-center font-semibold text-green-500 mb-10 text-6xl">Carter</h1>
+            <h1 class="text-center font-semibold text-green-500 mb-10 text-6xl">
+                Carter
+                <span>
+                    <font-awesome-icon :icon="['fa', 'car']" />
+                </span>
+            </h1>
             <input
                 class="
                     border-2 border-green-500 rounded-lg p-3 mb-3
@@ -28,6 +33,9 @@
                 id="password"
                 placeholder="*****"
             >
+            <button type="button" class="
+                bg-green-500 rounded-lg p-3 text-white font-semibold
+            ">Login</button>
         </form>
     </div>
 </template>
