@@ -25,7 +25,7 @@
             >
             <input
                 class="
-                    border-2 border-green-500 rounded-lg p-3 mb-3
+                    border-2 border-green-500 rounded-lg p-3 mb-8
                     focus:outline-none text-green-500 font-semibold placeholder:text-green-300
                 "
                 type="password"
@@ -42,6 +42,9 @@
 
 <script>
 export default {
-    name: 'AuthPage'
+    name: 'AuthPage',
+    methods: {
+        
+    }
 }
 </script>

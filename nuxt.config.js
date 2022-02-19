@@ -34,7 +34,7 @@ export default {
     '@nuxtjs/fontawesome'
   ],
 
-  fontawesom: {
+  fontawesome: {
     icons: {
       solid: true,
       brands: true
