@@ -44,7 +44,14 @@
 export default {
     name: 'AuthPage',
     methods: {
-        
+        handleLogin() {
+            const req = await this.$axios.$post('/auth/login');
+
+            req.then(resp => {
+
+            })
+            .catch(err => console.log('Error: ', err))
+        }
     }
 }
 </script>
