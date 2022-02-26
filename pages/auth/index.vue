@@ -22,6 +22,7 @@
                 name="email"
                 id="email"
                 placeholder="E-mail"
+                v-model="email"
             >
             <input
                 class="
@@ -32,10 +33,18 @@
                 name="password"
                 id="password"
                 placeholder="*****"
+                v-model="password"
             >
+            <Transition name="bounce">
+                <div class="alertArea" v-if="hasAlert">
+                    {{ alertMessage }}
+                </div>
+            </Transition>
             <button type="button" class="
                 bg-green-500 rounded-lg p-3 text-white font-semibold
-            ">Login</button>
+            "
+            @click="handleLogin"
+            >Login</button>
         </form>
     </div>
 </template>
@@ -43,15 +52,42 @@
 <script>
 export default {
     name: 'AuthPage',
+    data: () => ({
+        email: '',
+        password: '',
+        alertMessage: '',
+        hasAlert: false
+    }),
     methods: {
-        handleLogin() {
+        async handleLogin() {
             const req = await this.$axios.$post('/auth/login');
 
             req.then(resp => {
-
+                console.log('DATA', resp.data)
+                this.$store.commit('auth/setAuthentication', resp.data)
             })
-            .catch(err => console.log('Error: ', err))
+            .catch(err => {
+                console.log('Deu Ruim: ', err);
+
+                this.hasAlert = true;
+                this.alertMessage = "Verifique os se os dados enviados estão corretos!";
+            })
         }
     }
 }
 </script>
+
+<style scoped>
+.alertArea{
+    flex: 1;
+    justify-content: center;
+    align-content: center;
+    color: red;
+    background-color: rgb(216, 170, 170);
+    font-weight: bolder;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid red;
+
+}
+</style>

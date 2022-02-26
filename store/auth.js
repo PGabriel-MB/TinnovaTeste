@@ -11,6 +11,11 @@ export const mutations = {
     setToken(state, token) {
         state.token = token;
     },
+    setAuthentication(state, authentication) {
+        state.user = authentication.user;
+        state.token = authentication.token;
+        state.isAuthenticated = authentication.isAuthenticated;
+    },
     cleanAuthentication(state) {
         state.user = {};
         state.isAuthenticated = false;
